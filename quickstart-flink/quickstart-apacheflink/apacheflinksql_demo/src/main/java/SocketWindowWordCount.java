@@ -15,8 +15,6 @@
  * limitations under the License.
  */
 
-package org.apache.streampark.quickstart.flink;
-
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.utils.ParameterTool;

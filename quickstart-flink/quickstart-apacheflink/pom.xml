@@ -28,6 +28,9 @@
 
     <modules>
         <module>apacheflinksql_1.16</module>
+        <module>apacheflinksql_1.17</module>
+        <module>apacheflinksql_1.18</module>
+        <module>apacheflinksql_1.19</module>
         <module>apacheflinksql_demo</module>
     </modules>
 

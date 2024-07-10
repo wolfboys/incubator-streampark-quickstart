@@ -40,6 +40,9 @@
         <flink114.version>1.14.0</flink114.version>
         <flink115.version>1.15.0</flink115.version>
         <flink116.version>1.16.0</flink116.version>
+        <flink117.version>1.17.0</flink117.version>
+        <flink118.version>1.18.0</flink118.version>
+        <flink119.version>1.19.0</flink119.version>
     </properties>
 
     <build>

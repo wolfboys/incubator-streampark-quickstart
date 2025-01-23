@@ -16,6 +16,7 @@
  */
 package org.apache.streampark.flink.quickstart.connector;
 
+import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.streampark.flink.connector.function.SQLQueryFunction;
 import org.apache.streampark.flink.connector.function.SQLResultFunction;
 import org.apache.streampark.flink.connector.jdbc.source.JdbcJavaSource;
@@ -37,11 +38,11 @@ public class MySQLJavaApp {
         StreamingContext context = new StreamingContext(envConfig);
 
         //读取MySQL数据源
-        new JdbcJavaSource<Order>(context)
+        SingleOutputStreamOperator<Order> source =  new JdbcJavaSource<Order>(context)
                 .getDataStream(
                         (SQLQueryFunction<Order>) lastOne -> {
                             //5秒抽取一次
-                            Thread.sleep(5000);
+                            Thread.sleep(1000);
 
                             Serializable lastOffset = lastOne == null ? "2020-10-10 23:00:00" : lastOne.getTimestamp();
 
@@ -65,7 +66,9 @@ public class MySQLJavaApp {
                         }, null)
                 .returns(TypeInformation.of(Order.class));
 
-        context.start();
+        source.print("jdbc source: >>>>>");
+
+        context.execute();
 
     }
 }

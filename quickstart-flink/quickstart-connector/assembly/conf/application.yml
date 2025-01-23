@@ -57,7 +57,7 @@ flink:
         externalized-checkpoint-retention: RETAIN_ON_CANCELLATION
     # state backend
     state:
-      backend: hashmap # Special note: flink1.12 optional configuration ('jobmanager', 'filesystem', 'rocksdb'), flink1.12+ optional configuration ('hashmap', 'rocksdb'),
+      backend: filesystem # Special note: flink1.12 optional configuration ('jobmanager', 'filesystem', 'rocksdb'), flink1.12+ optional configuration ('hashmap', 'rocksdb'),
       backend.incremental: true
       checkpoint-storage: filesystem
       savepoints.dir: file:///tmp/chkdir
@@ -102,7 +102,7 @@ app: # user's parameter
   # jdbc config...
   jdbc:
     semantic: EXACTLY_ONCE # EXACTLY_ONCE|AT_LEAST_ONCE|NONE
-    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
     jdbcUrl: jdbc:mysql://localhost:3306/test?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: 123456
